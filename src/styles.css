@@ -1,23 +1,32 @@
+/* Uvoz Bootstrap i Font Awesome */
 @import 'https://stackpath.bootstrapcdn.com/bootstrap/4.2.1/css/bootstrap.min.css';
 @import 'https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css';
 
-
-body{
+/* Opći stilovi za tijelo stranice */
+body {
     background: #f5f5f5;
 }
+
+/* Stilovi za kartice */
 .card {
     border: none;
     -webkit-box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
     box-shadow: 0 1px 2px 0 rgba(0,0,0,.05);
     margin-bottom: 30px;
 }
+
+/* Stil za slike */
 .w-60 {
     width: 60px;
 }
+
+/* Stil za naslove */
 h1, h2, h3, h4, h5, h6 {
     margin: 0 0 10px;
     font-weight: 600;
 }
+
+/* Stil za društvene linkove */
 .social-links li a {
     -webkit-border-radius: 50%;
     background-color: rgba(89,206,181,.85);
@@ -30,6 +39,62 @@ h1, h2, h3, h4, h5, h6 {
     width: 30px;
     font-size: 12px;
 }
+
+/* Stil za linkove */
 a {
     color: #707070;
+}
+
+/* Stilovi za navigaciju */
+.navbar {
+    margin-bottom: 30px;
+}
+
+.navbar-toggler {
+    border-color: rgba(255, 255, 255, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.25rem;
+}
+
+/* Stilovi za navigacijski meni i gumb */
+.navbar-nav {
+    margin-left: auto;
+}
+
+.navbar-nav .nav-link {
+    padding: 0.5rem 1rem;
+}
+
+.navbar-nav .nav-link.active {
+    color: #fff;
+    background-color: #343a40;
+}
+
+.navbar-nav .nav-item {
+    margin-left: 1rem;
+}
+
+.navbar-toggler {
+    margin-right: 1rem;
+}
+
+/* Stilovi za gumb "Add Employee" */
+.nav-link {
+    cursor: pointer;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    background-color: #007bff;
+    color: white;
+    transition: background-color 0.3s;
+}
+
+.nav-link:hover {
+    background-color: #0056b3;
+}
+
+/* Stilovi za pretraživač */
+.form-inline input {
+    border-radius: 20px;
 }
