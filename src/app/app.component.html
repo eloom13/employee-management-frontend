@@ -10,8 +10,8 @@
           </li>
        </ul>
        <form class="form-inline my-2 my-lg-0">
-          <input type="search"
-           name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
+          <input type="search" (ngModelChange)="searchEmployees(key.value)" #key="ngModel" ngModel
+          name="key" id="searchName" class="form-control mr-sm-2" placeholder="Search employees..." required>
        </form>
     </div>
   </nav>
@@ -89,7 +89,7 @@
     <div class="modal-dialog" role="document">
        <div class="modal-content">
           <div class="modal-header">
-             <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Employee</h5>
+             <h5 class="modal-title" id="updateEmployeeModalLabel">Edit Employee {{editEmployee?.name}}</h5>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
              <span aria-hidden="true">&times;</span>
              </button>
@@ -139,10 +139,10 @@
              </button>
           </div>
           <div class="modal-body">
-             <p>Are you sure you want to delete employee</p>
+             <p>Are you sure you want to delete employee {{deleteEmployee?.name}}</p>
              <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-dismiss="modal">No</button>
-                <button class="btn btn-danger" data-dismiss="modal">Yes</button>
+                <button (click)="onDeleteEmployee(deleteEmployee?.id)" class="btn btn-danger" data-dismiss="modal">Yes</button>
              </div>
           </div>
        </div>

@@ -16,6 +16,7 @@ import { FormsModule, NgForm } from '@angular/forms';
 export class AppComponent implements OnInit {
   public employees: Employee[] | undefined;
   public editEmployee: Employee | undefined;
+  public deleteEmployee: Employee | undefined;
 
   constructor(private employeeService: EmployeeService) {}
 
@@ -61,6 +62,47 @@ export class AppComponent implements OnInit {
     );
   }
 
+  // small difference instead of other
+  public onDeleteEmployee(employeeId?: number): void {
+    if (employeeId === undefined) {
+      return; 
+    }
+    this.employeeService.deleteEmployee(employeeId).subscribe({
+      next: (response: void) => {
+        console.log(response);
+        this.getEmployees();
+      },
+      error: (error: HttpErrorResponse) => {
+        alert(error.message);
+      }
+    });
+  }
+
+  public searchEmployees(key: string): void {
+    if (!key) {
+      // Ako je ključ prazan, vrati sve zaposlenike
+      this.getEmployees(); // ili bilo koja metoda koja vraća sve zaposlenike
+      return;
+    }
+  
+    const lowerCaseKey = key.toLowerCase();
+  
+    const results = this.employees?.filter(employee =>
+      (employee.name && employee.name.toLowerCase().includes(lowerCaseKey)) ||
+      (employee.email && employee.email.toLowerCase().includes(lowerCaseKey)) ||
+      (employee.jobTitle && employee.jobTitle.toLowerCase().includes(lowerCaseKey)) ||
+      (employee.phone && employee.phone.toLowerCase().includes(lowerCaseKey))
+    );
+
+    this.employees = results;
+
+    if(results?.length === 0 || !key) {
+        this.getEmployees();
+    }
+  }
+  
+  
+
 public onOpenModal(employee: Employee | undefined | null, mode: string): void {
     const container = document.getElementById('main-container');
     const button = document.createElement('button');
@@ -76,6 +118,7 @@ public onOpenModal(employee: Employee | undefined | null, mode: string): void {
       button.setAttribute('data-target', '#updateEmployeeModal');
     }
     if(mode === 'delete'){
+      this.deleteEmployee = employee !== null ? employee : undefined;
       button.setAttribute('data-target', '#deleteEmployeeModal');
     }
 
