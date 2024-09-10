@@ -18,7 +18,7 @@ A frontend Angular application for managing employees. Features include viewing,
 - **Bootstrap 4.2.1**
 - **Font Awesome 4.3.0**
 
-##Backend Integration
+## Backend Integration
 This frontend application is designed to work with a Java REST API that you have implemented separately. Make sure the backend is running and accessible before using this application.
 
 ## Installation
