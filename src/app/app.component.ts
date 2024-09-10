@@ -4,11 +4,12 @@ import { CommonModule } from '@angular/common'; // Import CommonModule
 import { EmployeeService } from './employee.service';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Employee } from './employee';
+import { FormsModule, NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-root',
   standalone: true,
-  imports: [RouterOutlet, CommonModule], // Add CommonModule
+  imports: [RouterOutlet, CommonModule, FormsModule], // Add CommonModule
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
@@ -28,6 +29,19 @@ export class AppComponent implements OnInit {
       },
       (error: HttpErrorResponse) => {
         console.error('Error fetching employees:', error.message);
+      }
+    );
+  }
+
+  public onAddEmployee(addForm: NgForm): void{
+    document.getElementById('add-employee-form')?.click();
+    this.employeeService.addEmployee(addForm.value).subscribe(
+      (response: Employee) => {
+        console.log(response);
+        this.getEmployees();
+      },
+      (error: HttpErrorResponse) => {
+        alert(error.message);
       }
     );
   }
