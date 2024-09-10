@@ -24,7 +24,7 @@ This frontend application is designed to work with a Java REST API that you have
 ## Installation
 1. **Clone the Repository**
     ```sh
-    git clone https://github.com/your-username/employee-management-frontend.git
+    git clone https://github.com/eloom13/employee-management-frontend.git
     ```
 
 2. **Install Dependencies**
